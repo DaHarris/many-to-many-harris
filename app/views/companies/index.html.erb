@@ -17,7 +17,7 @@
       <tbody>
         <% @companies.each do |company| %>
           <tr>
-          <td><%=company.name %> <em>Link to company show page here.</em> </td>
+          <td><%=link_to company.name, company_path(company) %> </td>
           <td><%=company.catch_phrase %></td>
           <td><%=company.suffix %></td>
           <td><%= link_to "Review Company", new_company_company_review_path(company) %></td>

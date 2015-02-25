@@ -12,7 +12,7 @@ products = 10.times.map do
   {
     name: Faker::Commerce.product_name,
     price: Faker::Commerce.price,
-    company_id: (1..100).to_a.sample
+    company_id: (1..10).to_a.sample
   }
 
 end

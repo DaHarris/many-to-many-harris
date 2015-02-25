@@ -1,0 +1,26 @@
+<div class="page-header">
+  <h1><%= @company.name + ' ' + @company.suffix%></h1>
+</div>
+
+<ul>
+  <li><%= @company.catch_phrase %></li>
+</ul>
+
+<br>
+<br>
+<br>
+
+<table class="table table-striped">
+  <tr>
+      <th>Products</th>
+      <th>Price</th>
+  </tr>
+      <tbody>
+        <% @products.each do |product| %>
+          <tr>
+            <td><%=link_to product.name, product_path(product) %> </td>
+            <td><%= sprintf("%.2f", product.price) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+</table>
