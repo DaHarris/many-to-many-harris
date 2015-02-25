@@ -9,9 +9,7 @@ class ProductsController < ApplicationController
   end
 
 
-    def create
-
-      ### create a product here.
-    end
+  def create
+  end
 
 end
