@@ -17,7 +17,7 @@
                       <td><%= product_review.title %></td>
                       <td><%= product_review.description %></td>
                       <td><%= product_review.rating %></td>
-                      <td>Reviewer's name goes here</td>
+                      <td><%= User.find(product_review.user_id).name %></td>
                  </tr>
                     <% end %>
               </tbody>
