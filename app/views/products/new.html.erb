@@ -2,23 +2,7 @@
 <div class="page-header">
   <h1>Create a Product </h1>
 </div>
-
-<%= form_for @product do |f| %>
-
-     <p>
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-     </p>
-
-     <p>
-        <%= f.label :price %>
-        <%= f.number_field :price %>
-     </p>
-
-      <p>
-        <!-- f.collection_select(ALL COMPANIES) -->
-     </p>
-
-<%= f.submit %>
-
-<% end %>
+<br>
+<br>
+<br>
+<%= render 'form' %>
