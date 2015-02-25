@@ -7,6 +7,8 @@
 
     <%= f.label :price %>
     <%= f.number_field :price, class: "form-control" %>
+
+    <%= f.collection_select(:company_id, Company.all, :id, :name, {prompt: false}, {class: "form-control"})%>
     <br>
     <button type="submit" class="btn btn-primary">Submit</button>
   </div>
