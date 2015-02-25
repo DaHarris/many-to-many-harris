@@ -14,12 +14,39 @@
   <tr>
       <th>Products</th>
       <th>Price</th>
+      <th>Review Product</th>
   </tr>
       <tbody>
         <% @products.each do |product| %>
           <tr>
             <td><%=link_to product.name, product_path(product) %> </td>
             <td><%= sprintf("%.2f", product.price) %></td>
+            <td><%= link_to 'Review', new_product_product_review_path(product) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+</table>
+
+<br>
+<br>
+<div class="page-header">
+  <h3>Company Reviews</h3>
+</div>
+<br>
+<table class="table table-striped">
+  <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Rating</th>
+      <th>User</th>
+  </tr>
+      <tbody>
+        <% @reviews.each do |review| %>
+          <tr>
+            <td><%= review.title %> </td>
+            <td><%= review.description %></td>
+            <td><%= review.rating %></td>
+            <td><%= User.find(review.user_id).name %></td>
           </tr>
         <% end %>
       </tbody>
