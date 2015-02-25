@@ -9,4 +9,8 @@ class CompaniesController < ApplicationController
     @products = @company.products
   end
 
+  def new
+    @company = Company.new
+  end
+
 end

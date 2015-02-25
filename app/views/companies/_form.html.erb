@@ -1,0 +1,15 @@
+<%= form_for @company do |f| %>
+
+  <div class='col-md-6'>
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %>
+
+    <%= f.label :catch_phrase %>
+    <%= f.text_field :catch_phrase, class: "form-control" %>
+
+    <%= f.label :suffix %>
+    <%= f.text_field :suffix, class: "form-control" %>
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+<% end %>
