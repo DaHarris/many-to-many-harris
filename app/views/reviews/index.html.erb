@@ -41,7 +41,7 @@
                             <td><%= company_review.title %></td>
                             <td><%= company_review.description  %></td>
                             <td><%= company_review.rating %></td>
-                            <td>Reviewer goes here.</td>
+                            <td><%= User.find(company_review.user_id).name %></td>
                           </tr>
                         <% end %>
                     </tbody>
