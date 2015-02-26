@@ -1,18 +1,15 @@
 class SessionsController < ApplicationController
 
   def new
-
   end
 
   def create
     user = User.find_by(:email => params[:email])
-    if user
+    if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect_to root_path
     else
-      user = User.create(:email => params[:email], :name => Faker::Name.name)
-      session[:user_id] = user.id
-      redirect_to root_path
+      render :new
     end
   end
 
