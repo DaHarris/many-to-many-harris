@@ -13,6 +13,7 @@
       <th>Catch Phrase</th>
       <th>Suffix</th>
       <th></th>
+      <th></th>
   </tr>
       <tbody>
         <% @companies.each do |company| %>
@@ -21,6 +22,7 @@
           <td><%=company.catch_phrase %></td>
           <td><%=company.suffix %></td>
           <td><%= link_to "Review Company", new_company_company_review_path(company) %></td>
+          <td><%= link_to "Edit Company", edit_company_path(company) %></td>
          </tr>
             <% end %>
       </tbody>
