@@ -22,9 +22,29 @@ class CompanyReviewsController < ApplicationController
     end
   end
 
+  def edit
+    @company = Company.find(params[:company_id])
+    @company_review = @company.company_reviews.find(params[:id])
+  end
+
+  def update
+    @company = Company.find(params[:company_id])
+    @company_review = @company.company_reviews.find(params[:id])
+    if !@company_review.valid?
+      render :edit
+    else
+      if @company_review.update(company_review_params)
+        redirect_to companies_path, notice: "Company review was successfully updated."
+      else
+        render :edit
+      end
+    end
+  end
+
+
   private
   def company_review_params
-    params.require(:company_review).permit(:title, :desciption, :rating)
+    params.require(:company_review).permit(:title, :description, :rating)
   end
 
 end

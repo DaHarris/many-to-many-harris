@@ -2,23 +2,7 @@
 <div class='page-header'>
   <h1> Review <%=@company.name %> </h1>
 </div>
-
-  <%= form_for([@company, @company_review ]) do |f| %>
-        <p>
-        <%= f.label :title %>
-        <%= f.text_field :title %>
-        </p>
-
-        <p>
-        <%= f.label :description %>
-        <%= f.text_field :description %>
-        </p>
-
-        <p>
-        <%= f.label :rating %>
-        <%= f.select(:rating, (1..10).to_a) %>
-        </p>
-
-      <%= f.submit %>
-
-  <% end %>
+<br>
+<br>
+<br>
+<%= render 'form' %>

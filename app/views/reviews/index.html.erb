@@ -34,6 +34,7 @@
                     <th>Description</th>
                     <th>Rating</th>
                     <th>User</th>
+                    <th>Edit Review</th>
                 </tr>
                     <tbody>
                       <% @company_reviews.each do |company_review| %>
@@ -42,6 +43,9 @@
                             <td><%= company_review.description  %></td>
                             <td><%= company_review.rating %></td>
                             <td><%= User.find(company_review.user_id).name %></td>
+                            <% if @user.company_reviews.find(company_review) %>
+                              <td><%= link_to 'Edit Review', edit_company_company_review_path(company_review.company, company_review) %></td>
+                            <% end %>
                           </tr>
                         <% end %>
                     </tbody>
