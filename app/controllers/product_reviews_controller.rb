@@ -1,4 +1,5 @@
 class ProductReviewsController < ApplicationController
+  before_action :authenticate
 
   def new
     @product = Product.find(params[:product_id])
@@ -22,7 +23,32 @@ class ProductReviewsController < ApplicationController
     end
   end
 
+  def edit
+    @product = Product.find(params[:product_id])
+    @product_review = @product.product_reviews.find(params[:id])
+  end
+
+  def update
+    @product = Product.find(params[:product_id])
+    @product_review = @product.product_reviews.find(params[:id])
+    if !@product_review.valid?
+      render :edit
+    else
+      if @product_review.update(product_review_params)
+        redirect_to reviews_path, notice: "Review was successfully updated."
+      else
+        render :edit
+      end
+    end
+  end
+
   private
+
+  def authenticate
+    if !@current_user
+      redirect_to root_path, notice: "You must be logged in to review products."
+    end
+  end
 
   def product_review_params
     params.require(:product_review).permit(:title, :description, :rating)

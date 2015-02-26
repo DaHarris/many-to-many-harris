@@ -10,6 +10,7 @@
               <th>Description</th>
               <th>Rating</th>
               <th>User</th>
+              <th>Edit Review</th>
            </tr>
               <tbody>
                 <% @product_reviews.each do |product_review| %>
@@ -18,6 +19,11 @@
                       <td><%= product_review.description %></td>
                       <td><%= product_review.rating %></td>
                       <td><%= User.find(product_review.user_id).name %></td>
+                      <% if @user.product_reviews.find_by_id(product_review) %>
+                        <td><%= link_to 'Edit Review', edit_product_product_review_path(product_review.product, product_review) %></td>
+                      <% else %>
+                        <td></td>
+                      <% end %>
                  </tr>
                     <% end %>
               </tbody>
@@ -43,8 +49,10 @@
                             <td><%= company_review.description  %></td>
                             <td><%= company_review.rating %></td>
                             <td><%= User.find(company_review.user_id).name %></td>
-                            <% if @user.company_reviews.find(company_review) %>
+                            <% if @user.company_reviews.find_by_id(company_review) %>
                               <td><%= link_to 'Edit Review', edit_company_company_review_path(company_review.company, company_review) %></td>
+                            <% else %>
+                              <td></td>
                             <% end %>
                           </tr>
                         <% end %>

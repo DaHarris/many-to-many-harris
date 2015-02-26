@@ -1,4 +1,5 @@
 class CompanyReviewsController < ApplicationController
+  before_action :authenticate
 
   def new
     @company = Company.find(params[:company_id])
@@ -43,6 +44,13 @@ class CompanyReviewsController < ApplicationController
 
 
   private
+
+  def authenticate
+    if !@current_user
+      redirect_to root_path, notice: "You must be logged in to review products."
+    end
+  end
+
   def company_review_params
     params.require(:company_review).permit(:title, :description, :rating)
   end
